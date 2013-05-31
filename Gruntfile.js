@@ -34,6 +34,15 @@ module.exports = function(grunt) {
         files: {
           'tmp/': ['test/fixtures/*.unpack.js']
         }
+      },
+      custom_option: {
+        options: {
+          from: /\.with-dependencies\.js$/,
+          to: '.with-dependencies.min.js'
+        },
+        files: {
+          'tmp/': ['test/fixtures/*.with-dependencies.js']
+        }
       }
     },
 

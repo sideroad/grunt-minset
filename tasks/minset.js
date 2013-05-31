@@ -20,10 +20,12 @@ module.exports = function(grunt) {
         }),
         min = grunt.config.get(options.min);
 
-    min.minset = {
-      files: {}
-    };
-
+    if(!min.minset) {
+      min.minset = {
+        files: {}
+      };
+    }
+    
     this.files.forEach(function(f) {
 
       f.src.filter(function(filepath) {

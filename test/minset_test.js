@@ -41,5 +41,17 @@ exports.minset = {
     test.equal(actual, expected, 'should be minified b.unpack.js');
 
     test.done();
+  },
+  custom_option: function(test){
+    test.expect(1);
+
+    var actual;
+    var expected;
+    actual = grunt.file.read('tmp/a.with-dependencies.min.js');
+    expected = grunt.file.read('test/expected/a.with-dependencies.min.js');
+    test.equal(actual, expected, 'should be minified a.with-dependencies.js');
+
+    test.done();
   }
+
 };
