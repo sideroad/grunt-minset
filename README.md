@@ -37,17 +37,23 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.min
 Type: `String`
-Default value: `',  '`
+Default value: `uglify`
 
-A string value that is used to do something with whatever.
+A string value that is used to setting config.
 
-#### options.punctuation
+#### options.from
+Type: `RegExp`
+Default value: `/\.unpack\.js$/`
+
+Matched files in src pick up automatically.
+
+#### options.to
 Type: `String`
-Default value: `'.'`
+Default value: `.js`
 
-A string value that is used to do something else with whatever else.
+Matched files by `options.from` replace to `options.to` into dest directory.
 
 ### Usage Examples
 
@@ -59,7 +65,7 @@ grunt.initConfig({
   minset: {
     options: {},
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      'tmp': ['test/fixtures/*.unpack.js'],
     },
   },
 })
@@ -72,11 +78,11 @@ In this example, custom options are used to do something else with whatever else
 grunt.initConfig({
   minset: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
+      from: /\.js$/,
+      to: '.min.js',
     },
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      'tmp': ['path/to/js/directoy'],
     },
   },
 })
