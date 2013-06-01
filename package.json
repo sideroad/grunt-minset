@@ -1,7 +1,7 @@
 {
   "name": "grunt-minset",
   "description": "Set minify configure as uglify automatically",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/sideroad/grunt-minset",
   "author": {
     "name": "sideroad",

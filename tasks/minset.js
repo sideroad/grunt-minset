@@ -14,11 +14,11 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('minset', 'Set minify configure as uglify automatically.', function() {
 
     var options = this.options({
-          min: 'uglify',
+          config: 'uglify',
           from: /\.unpack\.js$/,
           to: '.js'
         }),
-        min = grunt.config.get(options.min);
+        min = grunt.config.get(options.config);
 
     if(!min.minset) {
       min.minset = {
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
       });
     });
 
-    grunt.config.set(options.min, min);
+    grunt.config.set(options.config, min);
 
   });
 

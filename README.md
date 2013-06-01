@@ -37,7 +37,7 @@ grunt.initConfig({
 
 ### Options
 
-#### options.min
+#### options.config
 Type: `String`
 Default value: `uglify`
 
@@ -68,6 +68,8 @@ grunt.initConfig({
       'tmp': ['test/fixtures/*.unpack.js'],
     },
   },
+
+  uglify: {}
 })
 ```
 
@@ -80,11 +82,14 @@ grunt.initConfig({
     options: {
       from: /\.js$/,
       to: '.min.js',
+      config: 'min'
     },
     files: {
-      'tmp': ['path/to/js/directoy'],
+      'tmp': ['path/to/js/directoy/*.js'],
     },
   },
+
+  min: {}
 })
 ```
 
