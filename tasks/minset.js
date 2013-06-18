@@ -9,33 +9,41 @@
 'use strict';
 
 module.exports = function(grunt) {
-  var path = require('path');
+  var path = require('path'),
+      index = 0;
 
   grunt.registerMultiTask('minset', 'Set minify configure as uglify automatically.', function() {
 
     var options = this.options({
           config: 'uglify',
           from: /\.unpack\.js$/,
-          to: '.js'
+          to: '.js',
+          divide: 10
         }),
-        min = grunt.config.get(options.config);
+        cnt = 0,
+        min = grunt.config.get(options.config),
+        divide = options.divide;
 
-    if(!min.minset) {
-      min.minset = {
-        files: {}
-      };
+    if(!min['minset-'+index]) {
+      min['minset-'+index] = {files: {}};
     }
-    
-    this.files.forEach(function(f) {
 
+    this.files.forEach(function(f) {
       f.src.filter(function(filepath) {
         if (!grunt.file.exists(filepath)) {
           grunt.log.warn('Source file "' + filepath + '" not found.');
         } else {
-          min.minset.files[path.resolve(f.dest, path.basename(filepath).replace(options.from, options.to))] = [filepath];
+          if(divide <= cnt){
+            index++;
+            min['minset-'+index] = {files: {}};
+            cnt = 0;
+          }
+          min['minset-'+index].files[path.resolve(f.dest, path.basename(filepath).replace(options.from, options.to))] = [filepath];
+          cnt++;
         }
       });
     });
+    index++;
 
     grunt.config.set(options.config, min);
 

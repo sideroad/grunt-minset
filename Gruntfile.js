@@ -38,7 +38,8 @@ module.exports = function(grunt) {
       custom_option: {
         options: {
           from: /\.with-dependencies\.js$/,
-          to: '.with-dependencies.min.js'
+          to: '.with-dependencies.min.js',
+          divide: 1
         },
         files: {
           'tmp/': ['test/fixtures/*.with-dependencies.js']
